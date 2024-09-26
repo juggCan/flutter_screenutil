@@ -138,7 +138,14 @@ class ScreenUtil {
             ? Orientation.landscape
             : Orientation.portrait);
 
+    if(orientation==Orientation.portrait){
+      deviceSize==Size(min(deviceSize.width,deviceSize.height),max(deviceSize.width,deviceSize.height));
+    }else{
+      deviceSize==Size(max(deviceSize.width,deviceSize.height),min(deviceSize.width,deviceSize.height));
+    }
+
     _instance
+      .._uiSize=deviceSize
       ..fontSizeResolver = fontSizeResolver ?? _instance.fontSizeResolver
       .._minTextAdapt = minTextAdapt ?? _instance._minTextAdapt
       .._splitScreenMode = splitScreenMode ?? _instance._splitScreenMode
